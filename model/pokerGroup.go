@@ -71,7 +71,6 @@ func (pg *PokerGroup) NewPG(pokers string) {
 			// 对牌的面值进行处理
 			faceValue = Face[string(pokers[i])]
 			pg.setValue(faceValue)
-			fmt.Printf("%s-------------------------------------%64b\n", string(pokers[i]), pg.Value)
 
 			maxPoker = util.If(maxPoker > faceValue, maxPoker, faceValue).(uint64)
 			minPoker = util.If(minPoker < faceValue, maxPoker, faceValue).(uint64)
@@ -105,19 +104,19 @@ func (pg *PokerGroup) NewPG(pokers string) {
 
 	case Level2 > pg.Value && pg.Value > Level1: // 没有相同牌可能是同花顺、同花、顺子、高牌
 		{
+			pg.PokerType = HighCard
+
 			if maxPoker-minPoker == 4 || pg.Value == A2345 {
 				pg.PokerType = Straight
 			}
 
 			if isFlush {
-				if pg.PokerType == Straight {
-					pg.PokerType = StraightFlush
-				} else {
+				if pg.PokerType != Straight {
 					pg.PokerType = Flush
+				} else {
+					pg.PokerType = StraightFlush
 				}
 			}
-
-			pg.PokerType = HighCard
 		}
 
 	}
