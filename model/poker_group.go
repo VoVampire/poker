@@ -2,7 +2,6 @@ package model
 
 import (
 	"poker/util"
-	"fmt"
 )
 
 const (

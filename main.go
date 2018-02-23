@@ -7,6 +7,14 @@ import (
 
 func main() {
 	// todo 从JSON文件中获取牌组到数组中
-	// todo 循环数组比较各组牌大小
-	fmt.Println(service.Compare("Qd5s3hJs3d","5cJcTc3c2c"))
+	if pokerFile, err := service.ReadPokerFile("./match.json"); err != nil {
+		panic(err.Error())
+	} else {
+		// todo 循环数组比较各组牌大小
+		for i := range pokerFile.File["matches"]{
+			pOne := pokerFile.File["matches"][i]["alice"].(string)
+			pTwo := pokerFile.File["matches"][i]["bob"].(string)
+			go fmt.Printf("%s, %s ,%d\n",pOne , pTwo, service.Compare(pOne, pTwo))
+		}
+	}
 }
