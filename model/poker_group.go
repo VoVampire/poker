@@ -55,7 +55,7 @@ func (pg *PokerGroup) NewPG(pokers string) {
 	maxPoker := Face[pokers[0:1]]
 	minPoker := Face[pokers[0:1]]
 
-	// 扫描并记录所有牌信息
+	// todo 遍历并记录牌信息
 	var faceValue uint64
 	for i := 0; i < len(pokers); i++ {
 		if i%2 == 1 {
@@ -76,11 +76,10 @@ func (pg *PokerGroup) NewPG(pokers string) {
 		}
 	}
 
-	// 判断牌组类型
+	// todo 判断牌类型
 	switch {
 	case pg.Value > Level4: // 有四张相同只能是四条
 		pg.PokerType = FourOfAKind
-
 	case Level4 > pg.Value && pg.Value > Level3: // 有三张相同可能是葫芦或者三条
 		{
 			// 若共有三种不同牌则为三条，否则为葫芦（两张不同的牌）
@@ -90,7 +89,6 @@ func (pg *PokerGroup) NewPG(pokers string) {
 				pg.PokerType = FullHouse
 			}
 		}
-
 	case Level3 > pg.Value && pg.Value > Level2: // 有两张相同可能是两对或一对
 		{
 			// 若共有四种不同牌则为一对，否则为两对（三张不同的牌）
@@ -100,7 +98,6 @@ func (pg *PokerGroup) NewPG(pokers string) {
 				pg.PokerType = TwoPair
 			}
 		}
-
 	case Level2 > pg.Value && pg.Value > Level1: // 没有相同牌可能是同花顺、同花、顺子、高牌
 		{
 			pg.PokerType = HighCard
@@ -117,10 +114,7 @@ func (pg *PokerGroup) NewPG(pokers string) {
 				}
 			}
 		}
-
 	}
-
-	return
 }
 
 func (pg *PokerGroup) setValue(i uint64) {
