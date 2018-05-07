@@ -6,8 +6,8 @@ func Compare(strA string, strB string) int {
 	playerB := analyzeHandsStr(strB).getMaxHands()
 
 	// 比较最大牌型
-	if result := getWinner(playerA.MaxCase, playerB.MaxCase); result != 0 {
-		return result
+	if winner := getWinner(playerA.MaxCase, playerB.MaxCase); winner != 0 {
+		return winner
 	}
 
 	// 顺子&同花顺存在“A2345”这一特殊情况，此时为最小顺子，需要手动标记（权值score设为0）
@@ -28,7 +28,7 @@ func analyzeHandsStr(handsStr string) *Hand {
 	hand := Hand{HandStr: handsStr}
 
 	for i := 0; i < len(handsStr); i++ {
-		if handsStr[i] == 'X' { // 赖子直接跳过当前面值和花色
+		if handsStr[i] == 'X' { // 鬼牌（赖子）直接跳过当前面值和花色
 			hand.GhostNum++
 			i++
 			continue
@@ -36,29 +36,19 @@ func analyzeHandsStr(handsStr string) *Hand {
 
 		if i%2 == 0 {
 			faceValue = Faces[string(handsStr[i])]
-			markOne(&hand.Faces, 0, faceValue) // 对牌的面值进行标记
+			markOne(&hand.Faces, 0, faceValue) // 对该牌的面值进行记录
 		} else {
 			suitsSubscript = Suits[string(handsStr[i])]
-			markOne(&hand.Suits, suitsSubscript, faceValue) // 对牌的花色进行标记
+			markOne(&hand.Suits, suitsSubscript, faceValue) // 对该牌的花色进行记录
 		}
 	}
 	return &hand
 }
 
-// 将牌面值相对应的二进制位置为1
-func markOne(arr *[4]uint64, arrSubscript int, i uint64) {
-	if arr[arrSubscript]&(1<<i) >= 1 { // 判断待标记的第i个比特位是否为1
-		arrSubscript++
-		markOne(arr, arrSubscript, i) // 递归 标记Face[0]第i位为1 -> 标记Face[1]第i位为1
-		return
-	}
-	arr[arrSubscript] = arr[arrSubscript] | (1 << i)
-}
-
 // 获取最大手牌
 func (hand *Hand) getMaxHands() (*MaxHand) {
-	maxHand := MaxHand{}
 	// 这里的判断有大小顺序,不能够调换顺序或随意删改
+	maxHand := MaxHand{}
 	if isStraightFlush(&maxHand, hand) {
 	} else if isFourOfAKind(&maxHand, hand) {
 	} else if isFullHouse(&maxHand, hand) {
@@ -233,6 +223,16 @@ func findStraight(data uint64, superCardNum uint64) uint64 {
 	return 0
 }
 
+// 将牌面对应的bit位标记为1
+func markOne(arr *[4]uint64, arrSubscript int, i uint64) {
+	if arr[arrSubscript]&(1<<i) >= 1 { // 如果Faces[0]第i位为1，那么标记Faces[1]第i位为1
+		arrSubscript++
+		markOne(arr, arrSubscript, i)
+		return
+	}
+	arr[arrSubscript] = arr[arrSubscript] | (1 << i)
+}
+
 // 获取整形转二进制后最高位1的值 func(1011) -> 1000
 func getFirstOne(data uint64) (result uint64) {
 	for data > 0 {
@@ -278,7 +278,7 @@ func If(condition bool, trueVal, falseVal interface{}) interface{} {
 	return falseVal
 }
 
-// Case - When - Then
+// Case When Then
 func CaseWhen(whenThen ...interface{}) interface{} {
 	for i := 0; i < len(whenThen)-1; i += 2 {
 		if whenThen[i].(bool) {

@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bd2cea2-350a-4501-9fce-5ec8c45f8151" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/match_samples/seven_cards_with_ghost.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/match_samples/seven_cards_with_ghost.result.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/readme.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model_hand.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/service_hand.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/service_hand_test.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/service_read_file.go" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
-      <change beforePath="$PROJECT_DIR$/model/poker_file.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/model/poker_group.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/service/compare.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/service/read_file_service.go" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/five_cards_with_ghost.json" afterPath="$PROJECT_DIR$/match_samples/five_cards_with_ghost.json" />
-      <change beforePath="$PROJECT_DIR$/src/match.json" afterPath="$PROJECT_DIR$/match_samples/match.json" />
-      <change beforePath="$PROJECT_DIR$/util/util.go" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/model_hand.go" afterPath="$PROJECT_DIR$/src/model_hand.go" />
+      <change beforePath="$PROJECT_DIR$/src/service_hand.go" afterPath="$PROJECT_DIR$/src/service_hand.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,10 +14,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
+            <state relative-caret-position="36">
               <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
               <folding>
                 <element signature="e#14#52#0" expanded="true" />
@@ -40,11 +26,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="match.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/match_samples/match.json">
+      <file leaf-file-name="service_hand.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/service_hand.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="54" lean-forward="false" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+            <state relative-caret-position="468">
+              <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+              <folding>
+                <element signature="n#!!block;n#isStraightFlush#0" expanded="false" />
+                <element signature="n#!!block;n#isFourOfAKind#0" expanded="false" />
+                <element signature="n#!!block;n#isFullHouse#0" expanded="false" />
+                <element signature="n#!!block;n#isFlush#0" expanded="false" />
+                <element signature="n#!!block;n#isStraight#0" expanded="false" />
+                <element signature="n#!!block;n#isThreeOfAKind#0" expanded="false" />
+                <element signature="n#!!block;n#isTwoPair#0" expanded="false" />
+                <element signature="n#!!block;n#isOnePair#0" expanded="false" />
+                <element signature="n#!!block;n#isHighCard#0" expanded="false" />
+                <element signature="n#!!block;n#findStraight#0" expanded="false" />
+                <element signature="n#!!block;n#markOne#0" expanded="false" />
+                <element signature="n#!!block;n#getFirstOne#0" expanded="false" />
+                <element signature="n#!!block;n#deleteLastOne#0" expanded="false" />
+                <element signature="n#!!block;n#leftMoveAndAdd#0" expanded="false" />
+                <element signature="n#!!block;n#countOne#0" expanded="false" />
+                <element signature="n#!!block;n#If#0" expanded="false" />
+                <element signature="n#!!block;n#CaseWhen#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model_hand.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model_hand.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -82,6 +96,8 @@
         <option value="$PROJECT_DIR$/model/poker_group.go" />
         <option value="$PROJECT_DIR$/model/poker_group_with_seven_cards.go" />
         <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/src/model_hand.go" />
+        <option value="$PROJECT_DIR$/src/service_hand.go" />
       </list>
     </option>
   </component>
@@ -121,6 +137,16 @@
             <path>
               <item name="poker" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker" type="462c0819:PsiDirectoryNode" />
+              <item name="match_samples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker" type="b2602c69:ProjectViewProjectNode" />
@@ -212,7 +238,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -465,22 +491,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/poker_group_with_seven_cards.go" />
-    <entry file="file://$PROJECT_DIR$/src/model_hand.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match_samples/match.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="54" lean-forward="false" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -492,12 +502,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/match_samples/match.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="36" lean-forward="true" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model_hand.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
+        <state relative-caret-position="36">
           <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding>
             <element signature="e#14#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service_hand.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!block;n#isStraightFlush#0" expanded="false" />
+            <element signature="n#!!block;n#isFourOfAKind#0" expanded="false" />
+            <element signature="n#!!block;n#isFullHouse#0" expanded="false" />
+            <element signature="n#!!block;n#isFlush#0" expanded="false" />
+            <element signature="n#!!block;n#isStraight#0" expanded="false" />
+            <element signature="n#!!block;n#isThreeOfAKind#0" expanded="false" />
+            <element signature="n#!!block;n#isTwoPair#0" expanded="false" />
+            <element signature="n#!!block;n#isOnePair#0" expanded="false" />
+            <element signature="n#!!block;n#isHighCard#0" expanded="false" />
+            <element signature="n#!!block;n#findStraight#0" expanded="false" />
+            <element signature="n#!!block;n#markOne#0" expanded="false" />
+            <element signature="n#!!block;n#getFirstOne#0" expanded="false" />
+            <element signature="n#!!block;n#deleteLastOne#0" expanded="false" />
+            <element signature="n#!!block;n#leftMoveAndAdd#0" expanded="false" />
+            <element signature="n#!!block;n#countOne#0" expanded="false" />
+            <element signature="n#!!block;n#If#0" expanded="false" />
+            <element signature="n#!!block;n#CaseWhen#0" expanded="false" />
           </folding>
         </state>
       </provider>

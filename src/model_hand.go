@@ -1,17 +1,17 @@
 package src
 
 type Hand struct {
-	HandStr  string    // 记录原始数据字符串 //例:AdAsAcAh2h2h2d
+	HandStr  string    // 记录原始手牌字符串
 	GhostNum uint64    // 鬼牌数量
-	Suits    [4]uint64 // Color[0]:记录所有黑桃's',Color[1]:记录所有红心'h',Color[2]:记录所有方块'd',Color[3]:记录所有草花'c'
-	Faces    [4]uint64 // Face[0]:记录所有出现过的牌,Face[1]:记录至少出现过两次的牌,Face[2]:记录至少出现过三次的牌...
+	Suits    [4]uint64 // 记录手牌中出现过得所有牌的花色
+	Faces    [4]uint64 // 记录手牌中出现过得所有牌的出现的次数（数组下标加1即为出现次数，bit位记录手牌牌面）
 }
 
 type MaxHand struct {
-	MaxCase   uint64 // 记录最大牌型 例: StraightFlush, FourOfAKind, FullHouse...
+	MaxCase   uint64 // 记录最大牌型（StraightFlush, FourOfAKind, FullHouse...）
 	MaxHand   uint64 // 记录最大五张牌和得分（bit位记录牌，int值表示得分）
-	FlushFlag bool   // 是否存在同花牌型
-	FlushSuit int    // 如果有同花，则记录同花的花色编号
+	FlushFlag bool   // 记录是否存在同花牌型
+	FlushSuit int    // 如果有同花，记录同花的花色编号
 }
 
 var Suits = map[string]int{
