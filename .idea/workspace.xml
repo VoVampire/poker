@@ -4,7 +4,6 @@
     <list default="true" id="4bd2cea2-350a-4501-9fce-5ec8c45f8151" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
-      <change beforePath="$PROJECT_DIR$/src/service_hand.go" afterPath="$PROJECT_DIR$/src/service_hand.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +17,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="450">
+              <caret line="25" column="21" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
               <folding>
                 <element signature="e#14#52#0" expanded="true" />
               </folding>
@@ -30,9 +29,13 @@
       <file leaf-file-name="service_hand.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service_hand.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="40" column="49" lean-forward="false" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+            <state relative-caret-position="108">
+              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
               <folding>
+                <element signature="n#!!block;n#Compare#0" expanded="false" />
+                <element signature="n#!!block;n#getWinner#0" expanded="false" />
+                <element signature="n#!!block;n#analyzeHandStr#0" expanded="false" />
+                <element signature="n#!!block;n#getMaxHands#0" expanded="false" />
                 <element signature="n#!!block;n#isStraightFlush#0" expanded="false" />
                 <element signature="n#!!block;n#isFourOfAKind#0" expanded="false" />
                 <element signature="n#!!block;n#isFullHouse#0" expanded="false" />
@@ -254,6 +257,10 @@
         <state relative-caret-position="468">
           <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
           <folding>
+            <element signature="n#!!block;n#Compare#0" expanded="false" />
+            <element signature="n#!!block;n#getWinner#0" expanded="false" />
+            <element signature="n#!!block;n#analyzeHandStr#0" expanded="false" />
+            <element signature="n#!!block;n#getMaxHands#0" expanded="false" />
             <element signature="n#!!block;n#isStraightFlush#0" expanded="false" />
             <element signature="n#!!block;n#isFourOfAKind#0" expanded="false" />
             <element signature="n#!!block;n#isFullHouse#0" expanded="false" />
@@ -430,9 +437,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service_hand.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="40" column="49" lean-forward="false" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+        <state relative-caret-position="108">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding>
+            <element signature="n#!!block;n#Compare#0" expanded="false" />
+            <element signature="n#!!block;n#getWinner#0" expanded="false" />
+            <element signature="n#!!block;n#analyzeHandStr#0" expanded="false" />
+            <element signature="n#!!block;n#getMaxHands#0" expanded="false" />
             <element signature="n#!!block;n#isStraightFlush#0" expanded="false" />
             <element signature="n#!!block;n#isFourOfAKind#0" expanded="false" />
             <element signature="n#!!block;n#isFullHouse#0" expanded="false" />
@@ -456,8 +467,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="450">
+          <caret line="25" column="21" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
           <folding>
             <element signature="e#14#52#0" expanded="true" />
           </folding>
