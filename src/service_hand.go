@@ -2,8 +2,8 @@ package src
 
 // 比较两张手牌
 func Compare(strA string, strB string) int {
-	playerA := analyzeHandsStr(strA).getMaxHands()
-	playerB := analyzeHandsStr(strB).getMaxHands()
+	playerA := analyzeHandStr(strA).getMaxHands()
+	playerB := analyzeHandStr(strB).getMaxHands()
 
 	// 比较最大牌型
 	if winner := getWinner(playerA.MaxCase, playerB.MaxCase); winner != 0 {
@@ -22,23 +22,23 @@ func getWinner(a, b uint64) int {
 }
 
 // 解析手牌字符串
-func analyzeHandsStr(handsStr string) *Hand {
+func analyzeHandStr(handStr string) *Hand {
 	var faceValue uint64   // 面值
 	var suitsSubscript int // 花色下标
-	hand := Hand{HandStr: handsStr}
+	hand := Hand{HandStr: handStr}
 
-	for i := 0; i < len(handsStr); i++ {
-		if handsStr[i] == 'X' { // 鬼牌（赖子）直接跳过当前面值和花色
+	for i := 0; i < len(handStr); i++ {
+		if handStr[i] == 'X' { // 鬼牌（赖子）直接跳过当前面值和花色
 			hand.GhostNum++
 			i++
 			continue
 		}
 
 		if i%2 == 0 {
-			faceValue = Faces[string(handsStr[i])]
+			faceValue = Faces[string(handStr[i])]
 			markOne(&hand.Faces, 0, faceValue) // 对该牌的面值进行记录
 		} else {
-			suitsSubscript = Suits[string(handsStr[i])]
+			suitsSubscript = Suits[string(handStr[i])]
 			markOne(&hand.Suits, suitsSubscript, faceValue) // 对该牌的花色进行记录
 		}
 	}

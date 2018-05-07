@@ -23,7 +23,7 @@ func main() {
 		if result := src.Compare(playerA, playerB); result != v.Result {
 			fmt.Printf("error result:%s, %s ,%d, should be %d\n", playerA, playerB, result, v.Result)
 		} else {
-			// 打印执行结果 // 如果全部代码写在main包里打印耗时就很长，约180+-ms，但是将别的代码文件放在在别的包(现在的src包)里就很快，约50+-ms
+			// 打印执行结果 // 如果全部代码写在main包里打印耗时就很长，约180+-ms，但是将别的代码文件放在在别的包(现在的src包)里就很快，约30+-ms
 			fmt.Printf("%s, %s ,%d\n", playerA, playerB, result)
 		}
 	}
