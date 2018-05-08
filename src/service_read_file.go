@@ -33,16 +33,10 @@ func MustGetMatchesFromMatchSamples(path string) (*Matches) {
 }
 
 // 打印牌组比较结果
-func (matches *Matches)PrintCompareResult(checkResult bool){
+func (matches *Matches) PrintCompareResult() {
 	for _, v := range matches.Matches {
-		playerA := v.PlayerA
-		playerB := v.PlayerB
-
-		if result := Compare(playerA, playerB); checkResult && result != v.Result {
-			fmt.Printf("error result:%s, %s ,%d, should be %d\n", playerA, playerB, result, v.Result)
-		} else {
-			fmt.Printf("%s, %s ,%d\n", playerA, playerB, result)
-		}
+		compareResult := Compare(v.PlayerA, v.PlayerB)
+		fmt.Printf("%s, %s , %d, %d\n", v.PlayerA, v.PlayerB, compareResult, v.Result)
 	}
-	fmt.Printf("总计：%d 条\n", len(matches.Matches))
+	fmt.Printf("合计：%d 条\n", len(matches.Matches))
 }

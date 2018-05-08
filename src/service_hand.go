@@ -1,5 +1,19 @@
 package src
 
+type Hand struct {
+	HandStr  string    // 记录原始手牌字符串
+	GhostNum uint64    // 鬼牌数量
+	Suits    [4]uint64 // 记录手牌中出现过得所有牌的花色
+	Faces    [4]uint64 // 记录手牌中出现过得所有牌的出现的次数（数组下标加1即为出现次数，bit位记录手牌牌面）
+}
+
+type MaxHand struct {
+	MaxCase   uint64 // 记录最大牌型（StraightFlush, FourOfAKind, FullHouse...）
+	MaxHand   uint64 // 记录最大五张牌和得分（bit位记录牌，int值表示得分）
+	FlushFlag bool   // 记录是否存在同花牌型
+	FlushSuit int    // 如果有同花，记录同花的花色编号
+}
+
 // 比较两张手牌
 func Compare(strA string, strB string) int {
 	playerA := analyzeHandStr(strA).getMaxHands()
@@ -49,21 +63,21 @@ func analyzeHandStr(handStr string) *Hand {
 func (hand *Hand) getMaxHands() (*MaxHand) {
 	// 这里的判断有大小顺序,不能够调换顺序或随意删改
 	maxHand := MaxHand{}
-	if isStraightFlush(&maxHand, hand) {
-	} else if isFourOfAKind(&maxHand, hand) {
-	} else if isFullHouse(&maxHand, hand) {
-	} else if isFlush(&maxHand, hand) {
-	} else if isStraight(&maxHand, hand) {
-	} else if isThreeOfAKind(&maxHand, hand) {
-	} else if isTwoPair(&maxHand, hand) {
-	} else if isOnePair(&maxHand, hand) {
-	} else if isHighCard(&maxHand, hand) {
+	if maxHand.isStraightFlush(hand) {
+	} else if maxHand.isFourOfAKind(hand) {
+	} else if maxHand.isFullHouse(hand) {
+	} else if maxHand.isFlush(hand) {
+	} else if maxHand.isStraight(hand) {
+	} else if maxHand.isThreeOfAKind(hand) {
+	} else if maxHand.isTwoPair(hand) {
+	} else if maxHand.isOnePair(hand) {
+	} else if maxHand.isHighCard(hand) {
 	}
 	return &maxHand
 }
 
 // 筛选同花顺
-func isStraightFlush(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isStraightFlush(hand *Hand) bool {
 	var tempValue uint64
 	for i := 0; i < len(hand.Suits); i++ {
 		// 筛选相同花色牌个数，如果大于（5-赖子）则标记为同花
@@ -85,7 +99,7 @@ func isStraightFlush(maxHand *MaxHand, hand *Hand) bool {
 }
 
 // 筛选四条 赖子最多三个，超过三个必为同花顺
-func isFourOfAKind(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isFourOfAKind(hand *Hand) bool {
 	// 筛选四条 赖子最多三个，超过三个必为同花顺
 	if hand.Faces[3-hand.GhostNum] > 0 {
 		maxHand.MaxCase = FourOfAKind
@@ -106,7 +120,7 @@ func isFourOfAKind(maxHand *MaxHand, hand *Hand) bool {
 }
 
 // 筛选葫芦 赖子最多一个，超过一个必大于等于四条
-func isFullHouse(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isFullHouse(hand *Hand) bool {
 	if hand.Faces[2-hand.GhostNum] > 0 && countOne(hand.Faces[1]) >= 2 {
 		maxHand.MaxCase = FullHouse
 		switch {
@@ -129,7 +143,7 @@ func isFullHouse(maxHand *MaxHand, hand *Hand) bool {
 }
 
 // 筛选同花 到这里赖子最多两个 剩下五张牌最多只能拼出一幅同花
-func isFlush(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isFlush(hand *Hand) bool {
 	if maxHand.FlushFlag {
 		var tempValue uint64
 		maxHand.MaxCase = Flush
@@ -143,7 +157,7 @@ func isFlush(maxHand *MaxHand, hand *Hand) bool {
 }
 
 // 筛选顺子
-func isStraight(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isStraight(hand *Hand) bool {
 	if maxHand.MaxHand = findStraight(hand.Faces[0], hand.GhostNum); maxHand.MaxHand != 0 {
 		maxHand.MaxCase = Straight
 		return true
@@ -152,7 +166,7 @@ func isStraight(maxHand *MaxHand, hand *Hand) bool {
 }
 
 // 筛选三对
-func isThreeOfAKind(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isThreeOfAKind(hand *Hand) bool {
 	if hand.Faces[2-hand.GhostNum] > 0 {
 		maxHand.MaxCase = ThreeOfAKind
 		firstOne := getFirstOne(hand.Faces[2-hand.GhostNum])
@@ -163,7 +177,7 @@ func isThreeOfAKind(maxHand *MaxHand, hand *Hand) bool {
 }
 
 // 筛选两对 不可能有赖子
-func isTwoPair(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isTwoPair(hand *Hand) bool {
 	if countOne := countOne(hand.Faces[1]); countOne >= 2 {
 		var tempValue uint64
 		maxHand.MaxCase = TwoPair
@@ -175,7 +189,7 @@ func isTwoPair(maxHand *MaxHand, hand *Hand) bool {
 }
 
 // 筛选一对
-func isOnePair(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isOnePair(hand *Hand) bool {
 	if hand.Faces[1-hand.GhostNum] > 0 {
 		maxHand.MaxCase = OnePair
 		switch {
@@ -191,11 +205,13 @@ func isOnePair(maxHand *MaxHand, hand *Hand) bool {
 }
 
 // 筛选高牌 到高牌则说明没有赖子，直接去掉两张最小牌即可
-func isHighCard(maxHand *MaxHand, hand *Hand) bool {
+func (maxHand *MaxHand)isHighCard(hand *Hand) bool {
 	maxHand.MaxCase = HighCard
 	maxHand.MaxHand = deleteLastOne(hand.Faces[0], 2)
 	return true
 }
+
+//****************************以下为工具代码**********************************
 
 // 查找序列中可能存在的顺子，并返回牌面最大的一个
 func findStraight(data uint64, superCardNum uint64) uint64 {
@@ -242,7 +258,7 @@ func getFirstOne(data uint64) (result uint64) {
 	return
 }
 
-// 删除整形转二进制后最后num个1,并返回删除后的值 func(1011, 2) -> 1000
+// 删除整形转二进制后最后n个1,并返回删除后的值 func(1011, 2) -> 1000
 func deleteLastOne(data uint64, deleteOneNum int) uint64 {
 	if deleteOneNum <= 0 {
 		return data

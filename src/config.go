@@ -1,19 +1,13 @@
 package src
 
-type Hand struct {
-	HandStr  string    // 记录原始手牌字符串
-	GhostNum uint64    // 鬼牌数量
-	Suits    [4]uint64 // 记录手牌中出现过得所有牌的花色
-	Faces    [4]uint64 // 记录手牌中出现过得所有牌的出现的次数（数组下标加1即为出现次数，bit位记录手牌牌面）
+var MatchSamplesPaths = []string{
+	"./match_samples/seven_cards_with_ghost.result.json",
+	//"./match_samples/seven_cards_with_ghost.json",
+	//"./match_samples/five_cards_with_ghost.json",
+	//"./match_samples/match.json",
 }
 
-type MaxHand struct {
-	MaxCase   uint64 // 记录最大牌型（StraightFlush, FourOfAKind, FullHouse...）
-	MaxHand   uint64 // 记录最大五张牌和得分（bit位记录牌，int值表示得分）
-	FlushFlag bool   // 记录是否存在同花牌型
-	FlushSuit int    // 如果有同花，记录同花的花色编号
-}
-
+// 牌色对应数组下标
 var Suits = map[string]int{
 	"s": 3,
 	"h": 2,
@@ -21,6 +15,7 @@ var Suits = map[string]int{
 	"c": 0,
 }
 
+// 牌面对应bit位
 var Faces = map[string]uint64{
 	"A": 12,
 	"K": 11,
