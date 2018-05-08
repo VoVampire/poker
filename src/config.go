@@ -7,7 +7,7 @@ var MatchSamplesPaths = []string{
 	//"./match_samples/match.json",
 }
 
-// 牌色对应数组下标
+// 牌色对应编号
 var Suits = map[string]int{
 	"s": 3,
 	"h": 2,
@@ -15,7 +15,7 @@ var Suits = map[string]int{
 	"c": 0,
 }
 
-// 牌面对应bit位
+// 牌面对应编号（对应bit位置）
 var Faces = map[string]uint64{
 	"A": 12,
 	"K": 11,
