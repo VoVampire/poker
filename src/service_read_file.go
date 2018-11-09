@@ -35,8 +35,10 @@ func MustGetMatchesFromMatchSamples(path string) (*Matches) {
 // 打印牌组比较结果
 func (matches *Matches) PrintCompareResult() {
 	for _, v := range matches.Matches {
-		compareResult := Compare(v.PlayerA, v.PlayerB)
-		fmt.Printf("%s, %s , %d, %d\n", v.PlayerA, v.PlayerB, compareResult, v.Result)
+		res := Compare(v.PlayerA, v.PlayerB)
+		if res != v.Result{
+			fmt.Printf("%s, %s , %d, %d\n", v.PlayerA, v.PlayerB, res, v.Result)
+		}
 	}
 	fmt.Printf("合计：%d 条\n", len(matches.Matches))
 }
