@@ -58,7 +58,7 @@ func analyzeHandStr(handStr string) *Hand {
 			hand.Faces[0] |= faceValue
 		} else {
 			// 记录花色
-			hand.Suits[Suits[string(handStr[i])]] |= faceValue
+			hand.Suits[Suits[handStr[i]]] |= faceValue
 		}
 	}
 	return &hand
