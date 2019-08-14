@@ -1,9 +1,8 @@
 package src
 
 import (
-	"io/ioutil"
 	"github.com/json-iterator/go"
-	"fmt"
+	"io/ioutil"
 )
 
 type Matches struct {
@@ -17,7 +16,7 @@ type Match struct {
 }
 
 // 获取牌组（必然获取，否则抛出异常）
-func MustGetMatchesFromMatchSamples(path string) (*Matches) {
+func MustGetMatchesFromMatchSamples(path string) *Matches {
 	var file []byte
 	var err error
 
@@ -35,10 +34,6 @@ func MustGetMatchesFromMatchSamples(path string) (*Matches) {
 // 打印牌组比较结果
 func (matches *Matches) PrintCompareResult() {
 	for _, v := range matches.Matches {
-		res := Compare(v.PlayerA, v.PlayerB)
-		if res != v.Result{
-			fmt.Printf("%s, %s , %d, %d\n", v.PlayerA, v.PlayerB, res, v.Result)
-		}
+		Compare(v.PlayerA, v.PlayerB)
 	}
-	fmt.Printf("合计：%d 条\n", len(matches.Matches))
 }

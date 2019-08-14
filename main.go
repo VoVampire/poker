@@ -2,16 +2,20 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"poker/src"
+	"time"
 )
 
 func main() {
-	beginTime := time.Now()
+	var matches *src.Matches
 
 	for _, path := range src.MatchSamplesPaths {
-		src.MustGetMatchesFromMatchSamples(path).PrintCompareResult()
+		matches = src.MustGetMatchesFromMatchSamples(path)
 	}
+
+	beginTime := time.Now()
+
+	matches.PrintCompareResult()
 
 	finishTime := time.Now()
 	fmt.Printf("共耗时：%.2f 毫秒\n", finishTime.Sub(beginTime).Seconds()*1000)
