@@ -14,7 +14,7 @@ type MaxHand struct {
 	FlushSuit int    // 如果有同花，记录同花的花色编号
 }
 
-// 比较两张手牌
+// 比较两张手牌、支持任意数量手牌及任意数量赖子
 func Compare(strA string, strB string) int {
 	playerA := analyzeHandStr(strA).getMaxHands()
 	playerB := analyzeHandStr(strB).getMaxHands()
@@ -65,8 +65,7 @@ func analyzeHandStr(handStr string) *Hand {
 }
 
 // 获取最大手牌
-func (hand *Hand) getMaxHands() (*MaxHand) {
-	// 这里的判断有大小顺序,不能够调换顺序或随意删改
+func (hand *Hand) getMaxHands() *MaxHand {
 	maxHand := MaxHand{}
 	if maxHand.isStraightFlush(hand) {
 	} else if maxHand.isFourOfAKind(hand) {
