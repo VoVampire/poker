@@ -1,6 +1,10 @@
 package src
 
 import (
+<<<<<<< HEAD
+=======
+	"fmt"
+>>>>>>> master
 	"github.com/json-iterator/go"
 	"io/ioutil"
 )
@@ -34,6 +38,13 @@ func MustGetMatchesFromMatchSamples(path string) *Matches {
 // 打印牌组比较结果
 func (matches *Matches) PrintCompareResult() {
 	for _, v := range matches.Matches {
+<<<<<<< HEAD
 		Compare(v.PlayerA, v.PlayerB)
+=======
+		res := Compare(v.PlayerA, v.PlayerB)
+		if res != v.Result {
+			fmt.Printf("%s, %s , %d, %d\n", v.PlayerA, v.PlayerB, res, v.Result)
+		}
+>>>>>>> master
 	}
 }
