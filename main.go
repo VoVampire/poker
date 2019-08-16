@@ -1,17 +1,18 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"poker/src"
 	"time"
 )
 
-func main() {
-	var matches *src.Matches
+var filePath = flag.String("file", "./match_samples/seven_cards_with_ghost.result.json", "file path")
 
-	for _, path := range src.MatchSamplesPaths {
-		matches = src.MustGetMatchesFromMatchSamples(path)
-	}
+func main() {
+	flag.Parse()
+
+	matches := src.MustGetMatchesFromMatchSamples(*filePath)
 
 	beginTime := time.Now()
 
